@@ -31,6 +31,4 @@ The page for 404
    Navigate to the `terraform` directory and run:
    ```bash
    terraform init
-
-
-
+   terraform apply --auto-approve
