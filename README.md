@@ -30,5 +30,7 @@ The page for 404
 1. **Initialize**:
    Navigate to the `terraform` directory and run:
    ```bash
+   git clone https://github.com/Abhimanyu9988/azure-blob-storage-account.git
+   cd Terraform
    terraform init
    terraform apply --auto-approve
