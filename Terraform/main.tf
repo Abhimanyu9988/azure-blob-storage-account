@@ -22,8 +22,8 @@ resource "azurerm_resource_group" "storage-account-rg" {
 
 resource "azurerm_storage_account" "storage-account" {
   name                     = var.storage_account_name
-  resource_group_name      = azurerm_resource_group.abhi-storage-account-rg.name
-  location                 = azurerm_resource_group.abhi-storage-account-rg.location
+  resource_group_name      = azurerm_resource_group.storage-account-rg.name
+  location                 = azurerm_resource_group.storage-account-rg.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
   account_kind = "StorageV2"
@@ -35,5 +35,5 @@ resource "azurerm_storage_account" "storage-account" {
 
 output "primary_web_endpoint" {
   description = "The primary web endpoint for the static website of the storage account"
-  value       = azurerm_storage_account.abhi-storage-account.primary_web_endpoint
+  value       = azurerm_storage_account.storage-account.primary_web_endpoint
 }
