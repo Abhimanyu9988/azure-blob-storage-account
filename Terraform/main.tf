@@ -33,6 +33,25 @@ resource "azurerm_storage_account" "storage-account" {
   }
 }
 
+resource "azurerm_storage_management_policy" "lifecycly-management-policy"{
+  storage_account_id = azurerm_storage_account.storage-account.id
+  rule {
+    name    = "MoveToCoolStorageAfter30Days"
+    enabled = true
+    filters {
+      prefix_match = [""]  # Apply to all blobs
+      blob_types   = ["blockBlob"]
+    }
+
+    actions {
+      base_blob {
+        tier_to_cool_after_days_since_modification_greater_than    = 30
+      }
+    }
+  }
+}
+
+
 output "primary_web_endpoint" {
   description = "The primary web endpoint for the static website of the storage account"
   value       = azurerm_storage_account.storage-account.primary_web_endpoint
